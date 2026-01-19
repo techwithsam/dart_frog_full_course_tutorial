@@ -14,6 +14,7 @@ A comprehensive tutorial project demonstrating how to build a RESTful API backen
 - [Project Structure](#-project-structure)
 - [API Endpoints](#-api-endpoints)
 - [Development](#-development)
+- [Flutter Frontend Integration](#-flutter-frontend-integration)
 - [Testing](#-testing)
 - [License](#-license)
 
@@ -252,6 +253,96 @@ This creates a production-ready build in the `build` directory.
 ```bash
 dart build/bin/server.dart
 ```
+
+## 📱 Flutter Frontend Integration
+
+This Dart Frog backend can be easily connected to a Flutter frontend application. The `flutter_todo_dart_frog` directory contains a complete Flutter app example that demonstrates how to interact with this API.
+
+### Connecting Your Flutter App
+
+1. **Update your API base URL:**
+
+In your Flutter app's HTTP client configuration, set the base URL to your Dart Frog server:
+
+```dart
+const String apiBaseUrl = 'http://localhost:8080';
+```
+
+1. **Make HTTP requests:**
+
+```dart
+import 'package:http/http.dart' as http;
+
+// Get all todos
+Future<List<Todo>> fetchTodos() async {
+  final response = await http.get(
+    Uri.parse('$apiBaseUrl/todos'),
+  );
+  
+  if (response.statusCode == 200) {
+    final List<dynamic> jsonData = jsonDecode(response.body);
+    return jsonData.map((json) => Todo.fromJson(json)).toList();
+  } else {
+    throw Exception('Failed to load todos');
+  }
+}
+
+// Create a new todo
+Future<void> createTodo(String title) async {
+  final response = await http.post(
+    Uri.parse('$apiBaseUrl/todos'),
+    headers: {'Content-Type': 'application/json'},
+    body: jsonEncode({'title': title}),
+  );
+  
+  if (response.statusCode != 201) {
+    throw Exception('Failed to create todo');
+  }
+}
+
+// Update a todo
+Future<void> updateTodo(String id, String title, bool isCompleted) async {
+  final response = await http.put(
+    Uri.parse('$apiBaseUrl/todos/$id'),
+    headers: {'Content-Type': 'application/json'},
+    body: jsonEncode({
+      'title': title,
+      'isCompleted': isCompleted,
+    }),
+  );
+  
+  if (response.statusCode != 200) {
+    throw Exception('Failed to update todo');
+  }
+}
+
+// Delete a todo
+Future<void> deleteTodo(String id) async {
+  final response = await http.delete(
+    Uri.parse('$apiBaseUrl/todos/$id'),
+  );
+  
+  if (response.statusCode != 204) {
+    throw Exception('Failed to delete todo');
+  }
+}
+```
+
+1. **Handle network requests:**
+
+For production environments, update your API URL to point to your deployed server:
+
+```dart
+const String apiBaseUrl = 'https://your-production-url.com';
+```
+
+### Screenshots
+
+The Flutter frontend integrating with this Dart Frog backend:
+
+<img src="screenshots/Src-1.png" alt="Todo App Screenshot 1" width="300" />
+<img src="screenshots/Src-2.png" alt="Todo App Screenshot 2" width="300" />
+<img src="screenshots/Src-3.png" alt="Todo App Screenshot 3" width="300" />
 
 ## 🧪 Testing
 
