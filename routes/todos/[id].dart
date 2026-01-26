@@ -1,7 +1,9 @@
 import 'package:dart_frog/dart_frog.dart';
 import 'package:my_project/src/todo_repository.dart';
+import 'package:my_project/src/user_model.dart';
 
 Future<Response> onRequest(RequestContext context, String id) async {
+  final user = context.read<User>();
   final todo = getTodoById(id);
   if (todo == null) return Response(statusCode: 404);
 
@@ -12,10 +14,10 @@ Future<Response> onRequest(RequestContext context, String id) async {
       final body = await context.request.json() as Map<String, dynamic>;
       final title = body['title'] as String?;
       final isCompleted = body['isCompleted'] as bool?;
-      updateTodo(id, title: title, isCompleted: isCompleted);
+      updateTodo(id, user.id, title: title, isCompleted: isCompleted);
       return Response.json(body: getTodoById(id)!.toJson());
     case HttpMethod.delete:
-      deleteTodo(id);
+      deleteTodo(id, user.id);
       return Response(statusCode: 204);
     case HttpMethod.post:
     case HttpMethod.patch:
