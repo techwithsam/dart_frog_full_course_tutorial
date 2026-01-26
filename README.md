@@ -23,6 +23,8 @@ A comprehensive tutorial project demonstrating how to build a RESTful API backen
 - **RESTful API** with CRUD operations
 - **Todo Management System** with create, read, update, and delete functionality
 - **User Management** endpoints
+- **Authentication** with JWT and BCrypt
+- **Middleware Support** for logging, CORS, and authentication
 - **In-memory data storage** for learning purposes
 - **Clean architecture** with repository pattern
 - **Comprehensive test coverage**
@@ -70,11 +72,18 @@ The server will start on `http://localhost:8080`.
 my_project/
 ├── lib/
 │   └── src/
+│       ├── constant.dart         # Constants (JWT Secret)
 │       ├── todo_model.dart       # Todo data model
-│       └── todo_repository.dart  # Todo data access layer
+│       ├── todo_repository.dart  # Todo data access layer
+│       ├── user_model.dart       # User data model
+│       └── user_repository.dart  # User data access layer
 ├── routes/
 │   ├── index.dart                # Root endpoint (GET /)
+│   ├── auth/
+│   │   ├── login.dart            # User login (POST /auth/login)
+│   │   └── register.dart         # User registration (POST /auth/register)
 │   ├── todos/
+│   │   ├── _middleware.dart      # Middleware (Auth, CORS, Logging)
 │   │   ├── index.dart            # Todo list operations (GET, POST /todos)
 │   │   └── [id].dart             # Individual todo operations (GET, PUT, DELETE /todos/:id)
 │   └── users/
@@ -105,7 +114,56 @@ Returns a welcome message.
 
 ---
 
+### Auth
+
+#### POST /auth/register
+
+Register a new user.
+
+**Request Body:**
+
+```json
+{
+  "username": "user1",
+  "password": "password123"
+}
+```
+
+**Response:**
+
+```json
+{
+  "id": "uuid",
+  "username": "user1"
+}
+```
+
+#### POST /auth/login
+
+Login and receive a JWT.
+
+**Request Body:**
+
+```json
+{
+  "username": "user1",
+  "password": "password123"
+}
+```
+
+**Response:**
+
+```json
+{
+  "token": "eyJhbGciOiJIUz..."
+}
+```
+
+---
+
 ### Todos
+
+> **Note:** All `/todos` endpoints look for a valid JWT in the `Authorization` header: `Bearer <token>`.
 
 #### GET /todos
 
