@@ -3,8 +3,16 @@
 [![style: dart frog lint][dart_frog_lint_badge]][dart_frog_lint_link]
 [![License: MIT][license_badge]][license_link]
 [![Powered by Dart Frog](https://img.shields.io/endpoint?url=https://tinyurl.com/dartfrog-badge)](https://dart-frog.dev)
+[![Youtube](https://img.shields.io/static/v1?label=TechWithSam&message=Subscribe&logo=YouTube&color=FF0000&style=for-the-badge)](https://youtube.com/techwithsam)
+[![Dart Frog](https://img.shields.io/badge/Globe-Deploy-blue)](https://globe.dev/) [![Flutter](https://img.shields.io/badge/Flutter-Client-02569B)](https://flutter.dev)
+[![GitHub stars](https://img.shields.io/github/stars/techwithsam/fintech_todo_serverpod.svg?style=social&label=Star)](https://github.com/techwithsam/fintech_todo_serverpod)
+[![GitHub TechWithSam](https://img.shields.io/github/followers/techwithsam?label=follow&style=social)](https://github.com/techwithsam)
 
 A comprehensive tutorial project demonstrating how to build a RESTful API backend using [Dart Frog](https://dart-frog.dev), a fast and minimalistic backend framework for Dart.
+
+[Full Course] Full-Stack Flutter in 2026: Dart Frog Full Course Tutorial - [Watch on youtube](https://www.youtube.com/playlist?list=PLMfrNHAjWCoBnALAfJAFvCmonUiBURAly)
+
+<a href="https://youtu.be/9rGEQH05x4I?si=lRIEztHczEpbAFrj"> <img height="500"  width="800" alt="Youtube Banner" src="https://img.youtube.com/vi/9rGEQH05x4I/0.jpg"></a>
 
 ## 📋 Table of Contents
 
@@ -398,9 +406,11 @@ const String apiBaseUrl = 'https://your-production-url.com';
 
 The Flutter frontend integrating with this Dart Frog backend:
 
-<img src="screenshots/Src-1.png" alt="Todo App Screenshot 1" width="300" />
-<img src="screenshots/Src-2.png" alt="Todo App Screenshot 2" width="300" />
-<img src="screenshots/Src-3.png" alt="Todo App Screenshot 3" width="300" />
+## Screenshots
+
+|             App Screenshot            |             App Screenshot           |             App Screenshot           |
+| :----------------------------------: | :----------------------------------: | :----------------------------------: |
+| ![First Screen](screenshots/Src-1.png) | ![Second Screen](screenshots/Src-2.png) | ![Third Screen](screenshots/Src-3.png) |
 
 ## 🧪 Testing
 
