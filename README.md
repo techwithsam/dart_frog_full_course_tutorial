@@ -3,9 +3,8 @@
 [![style: dart frog lint][dart_frog_lint_badge]][dart_frog_lint_link]
 [![License: MIT][license_badge]][license_link]
 [![Powered by Dart Frog](https://img.shields.io/endpoint?url=https://tinyurl.com/dartfrog-badge)](https://dart-frog.dev)
-[![Youtube](https://img.shields.io/static/v1?label=TechWithSam&message=Subscribe&logo=YouTube&color=FF0000&style=for-the-badge)](https://youtube.com/techwithsam)
 [![Dart Frog](https://img.shields.io/badge/Globe-Deploy-blue)](https://globe.dev/) [![Flutter](https://img.shields.io/badge/Flutter-Client-02569B)](https://flutter.dev)
-[![GitHub stars](https://img.shields.io/github/stars/techwithsam/fintech_todo_serverpod.svg?style=social&label=Star)](https://github.com/techwithsam/fintech_todo_serverpod)
+[![GitHub stars](https://img.shields.io/github/stars/techwithsam/dart_frog_full_course_tutorial.svg?style=social&label=Star)](https://github.com/techwithsam/dart_frog_full_course_tutorial)
 [![GitHub TechWithSam](https://img.shields.io/github/followers/techwithsam?label=follow&style=social)](https://github.com/techwithsam)
 
 A comprehensive tutorial project demonstrating how to build a RESTful API backend using [Dart Frog](https://dart-frog.dev), a fast and minimalistic backend framework for Dart.
@@ -405,8 +404,6 @@ const String apiBaseUrl = 'https://your-production-url.com';
 ### Screenshots
 
 The Flutter frontend integrating with this Dart Frog backend:
-
-## Screenshots
 
 |             App Screenshot            |             App Screenshot           |             App Screenshot           |
 | :----------------------------------: | :----------------------------------: | :----------------------------------: |
