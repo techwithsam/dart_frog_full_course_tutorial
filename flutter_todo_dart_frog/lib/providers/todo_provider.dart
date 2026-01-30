@@ -3,7 +3,12 @@ import 'package:flutter_todo_dart_frog/models/todo.dart';
 import 'package:flutter_todo_dart_frog/services/api_service.dart';
 import 'package:uuid/uuid.dart';
 
-final apiServiceProvider = Provider((ref) => ApiService());
+import 'auth_provider.dart';
+
+final apiServiceProvider = Provider((ref) {
+  final token = ref.watch(authProvider).token;
+  return ApiService(token: token);
+});
 
 final todoListProvider = AsyncNotifierProvider<TodoListNotifier, List<Todo>>(
   () {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'models/todo.dart';
+import 'providers/auth_provider.dart';
 import 'providers/todo_provider.dart';
 
 class TodoListScreen extends ConsumerWidget {
@@ -23,6 +24,11 @@ class TodoListScreen extends ConsumerWidget {
               IconButton(
                 onPressed: () => ref.refresh(todoListProvider),
                 icon: const Icon(Icons.refresh),
+              ),
+              IconButton(
+                onPressed: () => ref.read(authProvider.notifier).logout(),
+                icon: const Icon(Icons.logout),
+                tooltip: 'Logout',
               ),
             ],
           ),
@@ -157,7 +163,7 @@ class TodoCard extends ConsumerWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),

@@ -1,18 +1,23 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_todo_dart_frog/models/todo.dart';
 
 class ApiService {
-  final Dio _dio = Dio(
-    BaseOptions(
-      baseUrl: Platform.isAndroid
-          ? "http://10.0.2.2:8080"
-          : "http://localhost:8080",
-      connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 5),
-    ),
-  );
+  final Dio _dio;
+
+  ApiService({String? token})
+    : _dio = Dio(
+        BaseOptions(
+          baseUrl:
+              "https://my-project-1lg5ivc-samuel-adekunle-techwithsam.globeapp.dev",
+          connectTimeout: const Duration(seconds: 5),
+          receiveTimeout: const Duration(seconds: 5),
+          headers: {
+            if (token != null && token.isNotEmpty)
+              'Authorization': 'Bearer $token',
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
 
   Future<List<Todo>> getTodos() async {
     try {
